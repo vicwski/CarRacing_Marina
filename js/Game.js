@@ -50,7 +50,22 @@ class Game {
 
       var index = 0
       for (var plr in allPlayers) {
-        index += 1
+        index = index + 1
+
+        var x = allPlayers[plr].positionX
+        var y = height - allPlayers[plr].positionY
+
+        cars[index - 1].position.x = x
+        cars[index - 1].position.y = y
+
+        if (index === player.index) {
+          stroke(10)
+          fill('red')
+          ellipse(x, y, 60, 60)
+
+          camera.position.x = cars[index - 1].position.x
+          camera.position.y = cars[index - 1].position.y
+        }
       }
 
       this.handlePlayerControls()

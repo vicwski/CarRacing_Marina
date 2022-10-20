@@ -6,6 +6,15 @@ class Player {
     this.positionY = 0
   }
 
+  getDistance() {
+    var playerDistanceRef = database.ref('players/player' + this.index)
+    playerDistanceRef.on('value', data => {
+      var data = data.val()
+      this.positionX = data.positionX
+      this.positionY = data.positionY
+    })
+  }
+
   addPlayer() {
     var playerIndex = 'players/player' + this.index
 
@@ -32,6 +41,14 @@ class Player {
   updateCount(count) {
     database.ref('/').update({
       playerCount: count
+    })
+  }
+
+  update() {
+    var playerIndex = 'players/player' + this.index
+    database.ref(playerIndex).update({
+      positionX: this.positionX,
+      positionY: this.positionY
     })
   }
 
