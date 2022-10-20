@@ -60,7 +60,6 @@ class Game {
   }
 
   handlePlayerControls() {
-    // manipulando eventos de teclado
     if (keyIsDown(UP_ARROW)) {
       player.positionY += 10
       player.update()
