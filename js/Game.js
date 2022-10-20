@@ -30,6 +30,8 @@ class Game {
     car2.scale = 0.07
 
     cars = [car1, car2]
+    //car1 =  cars[0]
+    //car2 = cars[1]
   }
 
   handleElements() {
@@ -46,7 +48,22 @@ class Game {
     if (allPlayers !== undefined) {
       image(track, 0, -height * 5, width, height * 6)
 
+      var index = 0
+      for (var plr in allPlayers) {
+        index += 1
+      }
+
+      this.handlePlayerControls()
+
       drawSprites()
+    }
+  }
+
+  handlePlayerControls() {
+    // manipulando eventos de teclado
+    if (keyIsDown(UP_ARROW)) {
+      player.positionY += 10
+      player.update()
     }
   }
 }
