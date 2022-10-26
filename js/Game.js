@@ -1,5 +1,12 @@
 class Game {
-  constructor() {}
+  constructor() {
+    this.resetButton = createButton('Reset')
+    this.resetTitle = createElement('h2')
+
+    this.leaderBoardTitle = createElement('h2')
+    this.leader1 = createElement('h2')
+    this.leader2 = createElement('h2')
+  }
 
   getState() {
     var gameStateRef = database.ref('gameState')
@@ -37,7 +44,25 @@ class Game {
   handleElements() {
     form.hide()
     form.titleImg.position(40, 50)
+    form.titleImg.hide()
     form.titleImg.class('gameTitleAfterEffect')
+
+    this.resetTitle.html('Reiniciar')
+    this.resetTitle.class('resetText')
+    this.resetTitle.position(width / 2 + 400, 40)
+
+    this.resetButton.class('resetButton')
+    this.resetButton.position(width / 2 + 430, 100)
+
+    this.leaderBoardTitle.html('Placar')
+    this.leaderBoardTitle.class('placarTexto')
+    this.leaderBoardTitle.position(width / 2 - 400, 40)
+
+    this.leader1.class('placarTexto')
+    this.leader1.position(width / 2 + 400, 80)
+
+    this.leader2.class('placarTexto')
+    this.leader2.position(width / 2 + 400, 120)
   }
 
   play() {
