@@ -8,15 +8,6 @@ class Player {
     this.score = 0
   }
 
-  getDistance() {
-    var playerDistanceRef = database.ref('players/player' + this.index)
-    playerDistanceRef.on('value', data => {
-      var data = data.val()
-      this.positionX = data.positionX
-      this.positionY = data.positionY
-    })
-  }
-
   addPlayer() {
     var playerIndex = 'players/player' + this.index
 
@@ -30,8 +21,17 @@ class Player {
       name: this.name,
       positionX: this.positionX,
       positionY: this.positionY,
-      score: this.score,
-      rank: this.rank
+      rank: this.rank,
+      score: this.score
+    })
+  }
+
+  getDistance() {
+    var playerDistanceRef = database.ref('players/player' + this.index)
+    playerDistanceRef.on('value', data => {
+      var data = data.val()
+      this.positionX = data.positionX
+      this.positionY = data.positionY
     })
   }
 
@@ -53,8 +53,8 @@ class Player {
     database.ref(playerIndex).update({
       positionX: this.positionX,
       positionY: this.positionY,
-      score: this.score,
-      rank: this.rank
+      rank: this.rank,
+      score: this.score
     })
   }
 

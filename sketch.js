@@ -3,6 +3,9 @@ var backgroundImage, bgImg, car1_img, car2_img, track
 var database, gameState
 var form, player, playerCount
 var allPlayers, car1, car2
+var fuels, fuelImage, powerCoins, powerCoinImage
+var obstacles, obstacle1Image, obstacle2Image
+
 var cars = []
 
 function preload() {
